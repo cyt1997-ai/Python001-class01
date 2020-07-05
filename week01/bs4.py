@@ -24,10 +24,9 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, params=querystring)
 
-
+#解析网页
 bs_info = bs(response.text, 'html.parser')
 # print(response.text)
-
 
 
 # 获取电影名称，和链接地址
@@ -40,7 +39,7 @@ for tags in bs_info.find_all('div', attrs={'class': 'movie-hover-info'}):
     if n <= 10 :
 
     #电影名称
-        name = tags.find_all('div', attrs={'class': 'movie-hover-title'})[0].text.strip()
+        name = tags.find_all('div', attrs={'class': 'movie-hover-title'})[0].text.strip() #strip() 格式化输出，默认去掉行末的空格、换行符等特殊字符
         name = name.split()[0]
 
     #类型

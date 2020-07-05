@@ -28,7 +28,7 @@ for i in range(0,10):  #取前10个电影信息
     #获取详情页地址
     page_url = d_url+link[i].attrib['href']
 
-    print(page_url)
+    #print(page_url)
     #获取详情页内容
     page_tree = NeiRong(page_url).xpath('//*[@class="movie-brief-container"]')
 
@@ -37,15 +37,19 @@ for i in range(0,10):  #取前10个电影信息
 
     # 类型
     type_tree = page_tree[0].xpath('ul/li[1]/a')
-    # 遍历 a 标签内容
-    tpye_page = ''
-    for i in type_tree:
-        tpye_page = i.text
+    type_page = type_tree[0].text
+    # # 遍历 a 标签内容
+    # tpye_page = ''
+    # for i in type_tree:
+    #     tpye_page = i.text
 
     # 时间
     time_page = page_tree[0].xpath('ul/li[3]')[0].text
 
-    my_list.append((name_page,tpye_page,time_page))
+    my_list.append((name_page,type_page,time_page))
+    print(my_list)
+
+#把爬取内容存为csv文件
 import pandas
 
 movie_xpath = pandas.DataFrame(data=my_list)

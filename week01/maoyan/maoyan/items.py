@@ -12,5 +12,5 @@ class MaoyanItem(scrapy.Item):
     #pass
 
     name_page = scrapy.Field()
-    type_tree = scrapy.Field()
-    type_tree = scrapy.Field()
+    type_page = scrapy.Field()
+    time_page = scrapy.Field()
